@@ -1,19 +1,29 @@
 package lucyhill.popularmovies.objects;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Movie {
+    @SerializedName("vote_count")
     int voteCount;
     int id;
     boolean video;
-    int voteAverage;
+    @SerializedName("vote_average")
+    double voteAverage;
     String title;
     float popularity;
+    @SerializedName("poster_path")
     String posterPath;
+    @SerializedName("original_language")
     String originalLanguage;
+    @SerializedName("original_title")
     String originalTitle;
+    @SerializedName("genre_ids")
     int[] genreIds;
+    @SerializedName("backdrop_path")
     String backdropPath;
     boolean adult;
     String overview;
+    @SerializedName("release_date")
     String releaseDate;
 
     public int getVoteCount() {
@@ -40,11 +50,11 @@ public class Movie {
         this.video = video;
     }
 
-    public int getVoteAverage() {
+    public double getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(int voteAverage) {
+    public void setVoteAverage(double voteAverage) {
         this.voteAverage = voteAverage;
     }
 

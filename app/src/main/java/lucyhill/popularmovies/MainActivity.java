@@ -13,6 +13,7 @@ import android.widget.TextView;
 import lucyhill.popularmovies.adapters.EmptyAdapter;
 import lucyhill.popularmovies.adapters.PosterViewAdapter;
 import lucyhill.popularmovies.controllers.MovieDBController;
+import lucyhill.popularmovies.itemdecorations.PosterViewDecoration;
 import lucyhill.popularmovies.objects.Movie;
 import lucyhill.popularmovies.objects.PaginatedMovieList;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         mPosterView = findViewById(R.id.poster_view);
         mPosterView.setAdapter(new EmptyAdapter());
         mPosterView.setLayoutManager(new GridLayoutManager(this, COLUMNS_IN_POSTER_VIEW));
+        mPosterView.addItemDecoration(new PosterViewDecoration());
         mLoadingText = findViewById(R.id.loading_text);
         new MovieDBController(this, this).getPopularMovies(PAGE_REQUESTED);
 
