@@ -9,15 +9,17 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import lucyhill.popularmovies.adapters.EmptyAdapter;
 import lucyhill.popularmovies.adapters.PosterViewAdapter;
 import lucyhill.popularmovies.controllers.MovieDBController;
+import lucyhill.popularmovies.interfaces.PosterViewClickListener;
 import lucyhill.popularmovies.itemdecorations.PosterViewDecoration;
 import lucyhill.popularmovies.objects.Movie;
 import lucyhill.popularmovies.objects.PaginatedMovieList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PosterViewClickListener {
     public static final int PAGE_REQUESTED = 1;
     public static final int COLUMNS_IN_POSTER_VIEW = 3;
     private RecyclerView mPosterView;
@@ -40,7 +42,14 @@ public class MainActivity extends AppCompatActivity {
     public void displayPopularMovie(PaginatedMovieList movieList) {
         Log.d("MainActivity", "got movies back from api");
         mLoadingText.setVisibility(View.INVISIBLE);
-        mAdapter = new PosterViewAdapter(movieList);
+        mAdapter = new PosterViewAdapter(movieList, this);
         mPosterView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void posterViewClick() {
+        Log.d("MainActivity", "Houston, we have a click.");
+        Toast toast = Toast.makeText(this, "Click!", Toast.LENGTH_LONG);
+        toast.show();
     }
 }
