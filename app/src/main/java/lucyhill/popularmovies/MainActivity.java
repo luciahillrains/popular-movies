@@ -1,5 +1,6 @@
 package lucyhill.popularmovies;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,8 +49,7 @@ public class MainActivity extends AppCompatActivity implements PosterViewClickLi
 
     @Override
     public void posterViewClick() {
-        Log.d("MainActivity", "Houston, we have a click.");
-        Toast toast = Toast.makeText(this, "Click!", Toast.LENGTH_LONG);
-        toast.show();
+        Intent intent = new Intent(this, DetailsActivity.class);
+        startActivity(intent);
     }
 }
