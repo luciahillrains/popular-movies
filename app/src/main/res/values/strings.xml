@@ -3,4 +3,5 @@
     <string name="loading">Loading...</string>
     <string name="original_title">Original Title:</string>
     <string name="user_score">User Rating:</string>
+    <string name="released_on">Released on:</string>
 </resources>

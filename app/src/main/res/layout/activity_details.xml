@@ -87,11 +87,35 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_user_rating_lbl"
+            app:layout_constraintTop_toBottomOf="@+id/txt_released_on_lbl"
             tools:text="The Avengers try to make it big in the city of Manhatten!  What wacky adventures might happen!?" />
+
+        <TextView
+            android:id="@+id/txt_released_on_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/released_on"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_user_rating_lbl" />
+
+        <TextView
+            android:id="@+id/txt_released_on"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txt_released_on_lbl"
+            app:layout_constraintTop_toBottomOf="@+id/txt_user_rating"
+            tools:text="5/14/2019" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
