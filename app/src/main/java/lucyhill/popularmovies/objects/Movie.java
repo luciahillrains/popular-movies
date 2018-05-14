@@ -1,8 +1,11 @@
 package lucyhill.popularmovies.objects;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Movie {
+public class Movie implements Parcelable{
     @SerializedName("vote_count")
     int voteCount;
     int id;
@@ -25,6 +28,38 @@ public class Movie {
     String overview;
     @SerializedName("release_date")
     String releaseDate;
+
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel source) {
+            Movie movie = new Movie();
+            movie.setVoteAverage(source.readDouble());
+            movie.setPosterPath(source.readString());
+            movie.setReleaseDate(source.readString());
+            movie.setOriginalTitle(source.readString());
+            movie.setOverview(source.readString());
+            return movie;
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[0];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(voteAverage);
+        dest.writeString(posterPath);
+        dest.writeString(releaseDate);
+        dest.writeString(originalTitle);
+        dest.writeString(overview);
+    }
 
     public int getVoteCount() {
         return voteCount;

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements PosterViewClickLi
     private RecyclerView mPosterView;
     private RecyclerView.Adapter mAdapter;
     private TextView mLoadingText;
+    private PaginatedMovieList mMovieList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +45,14 @@ public class MainActivity extends AppCompatActivity implements PosterViewClickLi
         Log.d("MainActivity", "got movies back from api");
         mLoadingText.setVisibility(View.INVISIBLE);
         mAdapter = new PosterViewAdapter(movieList, this);
+        mMovieList = movieList;
         mPosterView.setAdapter(mAdapter);
     }
 
     @Override
-    public void posterViewClick() {
+    public void posterViewClick(int position) {
         Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra("movie", mMovieList.getResults().get(position));
         startActivity(intent);
     }
 }

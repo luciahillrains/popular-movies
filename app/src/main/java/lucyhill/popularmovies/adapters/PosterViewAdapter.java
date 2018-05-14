@@ -28,7 +28,6 @@ public class PosterViewAdapter extends RecyclerView.Adapter<PosterViewAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String posterImage = mDataSet.getResults().get(position).getPosterPath();
-        Log.d("PosterViewAdapter", "poster view path is "+posterImage );
         ImageView imageView = holder.view.findViewById(R.id.movie_poster);
         Picasso.get().load(IMAGES_BASE_URL+posterImage).into(imageView);
     }
@@ -56,9 +55,8 @@ public class PosterViewAdapter extends RecyclerView.Adapter<PosterViewAdapter.Vi
 
         @Override
         public void onClick(View v) {
-            Log.d("ViewHolder", "click invoked");
             int number =  getAdapterPosition();
-            mListener.posterViewClick();
+            mListener.posterViewClick(number);
         }
     }
 }
