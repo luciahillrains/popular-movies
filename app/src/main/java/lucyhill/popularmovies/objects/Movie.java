@@ -36,6 +36,7 @@ public class Movie implements Parcelable{
             movie.setVoteAverage(source.readDouble());
             movie.setPosterPath(source.readString());
             movie.setReleaseDate(source.readString());
+            movie.setTitle(source.readString());
             movie.setOriginalTitle(source.readString());
             movie.setOverview(source.readString());
             return movie;
@@ -57,6 +58,7 @@ public class Movie implements Parcelable{
         dest.writeDouble(voteAverage);
         dest.writeString(posterPath);
         dest.writeString(releaseDate);
+        dest.writeString(title);
         dest.writeString(originalTitle);
         dest.writeString(overview);
     }
