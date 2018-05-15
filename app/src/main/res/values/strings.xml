@@ -4,4 +4,7 @@
     <string name="original_title">Original Title:</string>
     <string name="user_score">User Rating:</string>
     <string name="released_on">Released on:</string>
+    <string name="popular_movies">Popular</string>
+    <string name="highest_rated">Highest Rated</string>
+    <string name="change_view">Change View</string>
 </resources>
