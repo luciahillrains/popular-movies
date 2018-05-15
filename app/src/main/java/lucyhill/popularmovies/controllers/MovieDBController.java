@@ -1,6 +1,5 @@
 package lucyhill.popularmovies.controllers;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -54,7 +53,7 @@ public class MovieDBController implements Callback<PaginatedMovieList> {
     public void onResponse(Call<PaginatedMovieList> call, Response<PaginatedMovieList> response) {
         if(response.isSuccessful()) {
             PaginatedMovieList paginatedMovieList = response.body();
-            activity.displayPopularMovie(paginatedMovieList);
+            activity.displayMovies(paginatedMovieList);
         } else {
             try {
                 Log.e("MovieDBController", response.errorBody().string());

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements PosterViewClickLi
     private RecyclerView.Adapter mAdapter;
     private TextView mLoadingText;
     private PaginatedMovieList mMovieList;
+    private MovieDBController mMovieDBController;
+    private Switch mSwitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,17 +39,38 @@ public class MainActivity extends AppCompatActivity implements PosterViewClickLi
         mPosterView.setLayoutManager(new GridLayoutManager(this, COLUMNS_IN_POSTER_VIEW));
         mPosterView.addItemDecoration(new PosterViewDecoration());
         mLoadingText = findViewById(R.id.loading_text);
-        new MovieDBController(this, this).getPopularMovies(PAGE_REQUESTED);
-
-
+        mSwitch = findViewById(R.id.switch_order);
+        mMovieDBController = new MovieDBController(this, this);
+        initialMovieLoad();
     }
 
-    public void displayPopularMovie(PaginatedMovieList movieList) {
+    public void displayMovies(PaginatedMovieList movieList) {
         Log.d("MainActivity", "got movies back from api");
         mLoadingText.setVisibility(View.INVISIBLE);
         mAdapter = new PosterViewAdapter(movieList, this);
         mMovieList = movieList;
         mPosterView.setAdapter(mAdapter);
+    }
+
+    public void initialMovieLoad() {
+        boolean showTopRatedFilms = SortingSingleton.getInstance().isShowTopRatedMovies();
+        if(showTopRatedFilms) {
+            mMovieDBController.getTopRatedMovies(PAGE_REQUESTED);
+            mSwitch.setChecked(true);
+        } else {
+            mMovieDBController.getPopularMovies(PAGE_REQUESTED);
+        }
+    }
+
+    public void switchMovieOrder(View view) {
+        Log.d("MainActivity", "switching view");
+        if(mSwitch.isChecked()) {
+            mMovieDBController.getTopRatedMovies(PAGE_REQUESTED);
+            SortingSingleton.getInstance().setShowTopRatedMovies(true);
+        } else {
+            mMovieDBController.getPopularMovies(PAGE_REQUESTED);
+            SortingSingleton.getInstance().setShowTopRatedMovies(false);
+        }
     }
 
     @Override

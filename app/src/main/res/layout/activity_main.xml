@@ -7,10 +7,11 @@
     tools:context=".MainActivity">
 
     <Switch
-        android:id="@+id/switch_view"
+        android:id="@+id/switch_order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:onClick="switchMovieOrder"
         android:text="@string/popular_movies"
         android:textAppearance="@android:style/TextAppearance.Material.Small"
         android:textOff="@string/popular_movies"
@@ -24,7 +25,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="32dp"
         android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/switch_view" />
+        app:layout_constraintTop_toBottomOf="@+id/switch_order" />
 
     <TextView
         android:id="@+id/loading_text"
@@ -46,7 +47,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/highest_rated"
         app:layout_constraintBottom_toTopOf="@+id/poster_view"
-        app:layout_constraintStart_toEndOf="@+id/switch_view"
+        app:layout_constraintStart_toEndOf="@+id/switch_order"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
